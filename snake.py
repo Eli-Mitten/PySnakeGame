@@ -7,23 +7,23 @@ DOWN = 270
 LEFT = 180
 RIGHT = 0
 
-class Snake:
 
+class Snake:
     def __init__(self):
         self.segments = []
         self.__create_snake()
         self.head = self.segments[0]
-
 
     def __create_snake(self):
         for position in STARTING_POSITION:
             print(position)
             if position == (0, 0):
                 new_segment = Turtle("triangle")
+                new_segment.shapesize(outline=7)
             else:
                 new_segment = Turtle("square")
             new_segment.penup()
-            new_segment.color("white")
+            new_segment.color("green", "green")
             new_segment.goto(position)
             self.segments.append(new_segment)
 
