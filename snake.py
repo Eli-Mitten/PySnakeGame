@@ -1,3 +1,4 @@
+import turtle
 from turtle import Turtle
 
 STARTING_POSITION = [(0, 0), (-20, 0), (-40, 0)]
@@ -18,7 +19,6 @@ class Snake:
         for position in STARTING_POSITION:
             self.add_segment(position)
 
-
     def add_segment(self, position):
         if position == (0, 0):
             new_segment = Turtle("triangle")
@@ -29,6 +29,13 @@ class Snake:
         new_segment.color("green", "green")
         new_segment.goto(position)
         self.segments.append(new_segment)
+
+    def reset(self):
+        for segment in self.segments:
+            segment.goto(1000, 1000)
+        self.segments.clear()
+        self.__create_snake()
+        self.head = self.segments[0]
 
     def extend(self):
         self.add_segment(self.segments[-1].position())
